@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include head.html %>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+</head>
+<body>
+
+<style>
+    .swiper-container {width: 100%; height: 4rem;}
+    .swiper-container img {width: 100%; height: 4rem;}
+</style>
+<div class="swiper-container" id="banner">
+    <div class="swiper-wrapper">
+        <% for(var i=0;i<imgs.length;i++){ %>
+        <div class="swiper-slide"><img src="<%= imgs[i] %>"></div>
+        <% } %>
+    </div>
+</div>
+
+<!-- 推荐商品 -->
+<style>
+    .tuijian{width: 100%;margin: .1rem 0;}
+    .tuijian li {height: 4rem;width: 100%;}
+</style>
+<div class="tuijian">
+    <ul>
+        <% for(var j=0;j<tuijian.length;j++){ %>
+        <li>
+            <img src="<%= tuijian[j].img %>">
+            <p>
+                <span class="title"><%=tuijian[j].title%></span>
+                <span class="price"><%=tuijian[j].price%></span>
+            </p>
+        </li>
+        <% } %>
+    </ul>
+</div>
+
+
+
+
+<% include tab.html %>
+<% include foot.html %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+<script>
+
+    var banner = new Swiper('#banner',{autoplay: true});
+
+    $.ajax({
+        url: '/getTuijian',
+        type: 'GET',
+        success: function (res) {
+            console.log(res);
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="./img/logo.png">
+  <title>首页</title>
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <script src="./js/jquery.min.js"></script>
+</head>
+<body >
+  <div class="mz-bg"></div>
+  <header class="mz-header">
+    <div class="mz-top">
+      <a class="mz-logo" href="javascript:;">
+        <img src="./img/logo.png" alt="">
+        <h1>xxxX博客</h1>
+      </a>
+      <ul class="mz-header-nav">
+        <li class="mz-top-nav">
+          <a href="javascript:;">首页</a>
+        </li>
+        <li class="mz-top-nav">
+          <a href="/edit">发布文章</a>
+        </li>
+        <li class="mz-top-nav">
+          <a href="/reg">注册</a>
+        </li>
+        <li class="mz-top-nav">
+          <a href="/login">登录</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+  <main class="mz-main clearfix">
+    <div class="mz-content">
+      <div class="mz-hello-box">
+        <div class="mz-hello">
+          <div class="mz-hello-img">
+            <img src="./img/hello.jpg" alt="">
+          </div>
+        </div>
+      </div>
+      <% if(article.length > 0){ %>
+        <% article.forEach(function (res) {%>
+        <div class="mz-postlist-item">
+            <h2 class="mz-post-title">
+              <a href="./page.html"><%- res.title %></a>
+            </h2>
+            <p class="mz-des">
+              <%- res.content %>
+            </p>
+            <div class="mz-mate">
+              <!-- <span class="mz-avatar-inline">
+                <a href="javascript:;">
+                  <img src="./img/user-img.jpg" alt="">
+                </a>
+              </span> -->
+              <span class="mz-author-name">
+                <a href="javascript:;"><%= res.name %></a>
+              </span>
+              <span class="mz-dot"></span>
+              <span><%= res.moment %></span>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+      <nav class="mz-nav">
+        加载更多
+      </nav>
+    </div>
+    <div class="mz-sidebar">
+      <div class="mz-sidebar-inner">
+        <div class="mz-author">
+          <img class="mz-author-img" src="./img/user-img.jpg" alt="">
+          <p class="mz-author-blog">xxx博客</p>
+          <p class="mz-author-description">博客博客博客博客博客博客博客博客博客博客博客博客博客博客博客博客博客博客博客</p>
+          <div class="mz-links clearfix">
+            <span class="mz-links-item">
+              <a href="https://github.com/imizao">
+                <i class="mz-github-icon"></i>
+                GitHub
+              </a>
+            </span>
+            <span class="mz-links-item">
+              <a href="javascript:;">
+                <i class="mz-weibo-icon"></i>
+                Weibo
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="mz-sidebar-box">
+        <h5 class="mz-title">热门文章</h5>
+        <div class="mz-sidebar-con">
+          <ul>
+            <li>
+              <div class="mz-sidebar-content">
+                <h5>两袖清风两袖清风两</h5>
+              </div>
+            </li>
+            <li>
+                <div class="mz-sidebar-content">
+                  <h5>两袖清风两袖清风两</h5>
+                </div>
+              </li>
+              <li>
+                <div class="mz-sidebar-content">
+                  <h5>两袖清风两袖清风两</h5>
+                </div>
+              </li>
+              <li>
+                <div class="mz-sidebar-content">
+                  <h5>两袖清风两袖清风两</h5>
+                </div>
+              </li>
+              <li>
+                <div class="mz-sidebar-content">
+                  <h5>两袖清风两袖清风两</h5>
+                </div>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="mz-footer">
+    <div class="mz-outer">
+      <div class="mz-footer-info">
+        ©2017 - 2018 Mizao <br>
+        粤备 123121313
+      </div>
+    </div>
+  </footer>
+  <script>
+    $.ajax({
+      url:'/index',
+      type: 'GET',
+      success: function (res) {
+        console.log(res)
+      }
+    })
+  </script>
+</body>
+</html>

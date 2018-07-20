@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include head.html %>
+
+</head>
+<body>
+
+<input type="name">
+<input type="password">
+
+<button class="login-submit">登陆</button>
+
+<% include foot.html %>
+<script>
+
+    $(function () {
+        var from = getParamValue('from') || '';
+        if (from) {
+            toast('用户未登录');
+        }
+
+        $('.login-submit').click(function () {
+            var name = $('input[type=name]').val();
+            var pwd = $('input[type=password]').val();
+            if (!name) {toast('请输入用户名'); return;}
+            if (!pwd) {toast('请输入密码'); return;}
+            $.ajax({
+                url: '/login',
+                type: 'POST',
+                data: {
+                    name: name,
+                    pwd: pwd
+                },
+                success: function (res) {
+                    if (res.code === 200) {
+                        toast('登陆成功！');
+                        localStorage.setItem('name', res.data);
+                        setTimeout(function () {
+                            location.href = '/' + from;
+                        }, 2000);
+                    } else {
+                        toast(res.message);
+                    }
+                }
+            });
+        });
+
+    })
+
+
+</script>
+</body>
+</html>

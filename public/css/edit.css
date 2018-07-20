@@ -1,0 +1,79 @@
+.mz-navbar{
+  position: relative;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 59px;
+  width: 100%;
+  border-bottom: 1px solid rgb(163, 161, 161);
+  color: gray;
+  background: #fff;
+  background: hsla(0,0%,100%,.97);
+  z-index: 2;
+}
+.mz-navbar-title{
+  margin: 0 auto;
+  width: 660px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  white-space: nowrap;
+  line-height: 59px;
+}
+.mz-navbar-release{
+  position: absolute;
+  top: 15px;
+  right: 100px;
+  width: 75px;
+  height: 29px;
+  box-sizing: border-box;
+  color: gray;
+  border: 1px solid rgb(163, 161, 161);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.mz-edit-main{
+  margin: 47px auto 0;
+  padding: 0;
+  width: 660px;
+  z-index: 1;
+}
+.mz-edit-write{
+  position: relative;
+  margin: 16px 0;
+  border: 0;
+  padding: 0;
+  height: auto;
+  width: 100%;
+}
+.Input{
+  height: 44px;
+  min-height: 44px;
+  display: block;
+  width: 100%;
+  border: 0;
+  font-size: 32px;
+  line-height: 1.4;
+  font-weight: 600;
+  font-synthesis: style;
+  outline: none;
+  box-shadow: none;
+}
+.mz-richtext{
+  margin: 30px 0;
+  padding: 0 0 200px;
+  min-width: 660px;
+}
+.mz-edior-root{
+  padding: 0;
+  font-size: 16px;
+  min-height: 300px;
+}

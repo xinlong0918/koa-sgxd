@@ -1,0 +1,25 @@
+<script src="./js/jquery.min.js"></script>
+<script>
+    // toast 提示
+    var toast = function (str) {
+        var oDiv = $('.toast');
+        if (oDiv.length === 0) {
+            var style = 'position: absolute;left: 50%;top: 50%;transform: translate3d(-50%, -50%, 0);height: .6rem;padding: .1rem .2rem;background: #333; color: #fff;font-size: .28rem;display:none;border-radius: .1rem;';
+            $('<div style="' + style + '" class="toast">' + str + '</div>').appendTo($('body'));
+        } else if (oDiv.css('display') === 'block') {
+            console.log('no toast repeat...');
+            return;
+        }
+        $('.toast').text(str).fadeIn(200);
+        setTimeout(function () {
+            $('.toast').fadeOut(200);
+        }, 2000);
+    };
+// 获取 url 中的参数
+    var getParamValue = function (key) {
+        var reg = new RegExp('&?'+key + '=(\\w+)&?');
+        var result = location.search.substr(1).match(reg);
+
+        return result && result.length>1 ? result[1] : '';
+    };
+</script>

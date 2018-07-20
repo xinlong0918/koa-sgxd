@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>发表文章</title>
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/edit.css">
+  <script src="./js/jquery.min.js"></script>
+</head>
+<body>
+  <header class="mz-navbar">
+    <div class="mz-navbar-logo"></div>
+    <div class="mz-navbar-title">写文章</div>
+    <button id="release" class="mz-navbar-release">发布</button>
+  </header>
+  <div class="mz-edit-main">
+    <div class="mz-edit-write">
+      <textarea rows="1" id="title" class="Input" placeholder="请输入标题" style="height: 44px;"></textarea>
+    </div>
+    <div class="mz-richtext">
+      <div class="mz-edior-root">
+        <textarea id="content" placeholder="请输入内容" name="content" id="" style="width: 660px;height: 500px;" rows="10"></textarea>
+      </div>
+    </div>
+  </div>
+  <footer class="mz-footer">
+    <div class="mz-outer">
+      <div class="mz-footer-info">
+        ©2017 - 2018 Mizao <br>
+        粤备 123121313
+      </div>
+    </div>
+  </footer>
+  <script>
+    $('#release').click(function () {
+      var aTitle = $('#title').val();
+      var aCon = $('#content').val();
+      $.ajax({
+        url: '/edit',
+        data: {
+          title: aTitle,
+          content: aCon
+        },
+        type: 'POST',
+        success: function (res) {
+          console.log(res);
+        }
+      })
+    })
+  </script>
+</body>
+</html>

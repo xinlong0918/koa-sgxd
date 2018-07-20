@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include head.html %>
+</head>
+<body>
+<style type="text/css">
+    .info {
+        height: 1.5rem;
+        line-height: 1.5rem;
+        font-size: .36rem;
+        text-align: center;
+    }
+
+    .link {
+        text-align: center;
+        font-size: .28rem;
+    }
+    .login-btn, .reg-btn, .log-out { display: none;}
+</style>
+<div class="info">hello</div>
+<div class="link">
+    <a href="/login" class="login-btn">登陆</a>
+    <a href="/reg" class="reg-btn">注册</a>
+    <span class="log-out">退出登录</span>
+</div>
+<% include tab.html %>
+<% include foot.html %>
+<script>
+
+    $(function () {
+        if (localStorage.getItem('name')) {
+            $('.info').text('hello ' + localStorage.getItem('name'));
+            $('.log-out').show();
+        } else {
+            $('.login-btn, .reg-btn').show();
+        }
+        $('.log-out').click(function () {
+            // 删除用户信息...
+            $.ajax({
+                url: '/logout',
+                type: 'POST',
+                success: function (res) {
+                    if (res.code === 200) {
+                        localStorage.removeItem('name');
+                        location.reload();
+                    }
+                }
+            })
+
+
+        });
+    })
+
+</script>
+</body>
+</html>

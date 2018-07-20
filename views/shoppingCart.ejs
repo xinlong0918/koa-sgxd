@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include head.html %>
+</head>
+<body>
+
+购物车
+
+<% include tab.html %>
+<% include foot.html %>
+
+<script>
+
+    $.ajax({
+        url: '/getOrders',
+        type: 'GET',
+        success: function (res) {
+            console.log(res);
+        }
+    })
+
+</script>
+</body>
+</html>
